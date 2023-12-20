@@ -451,7 +451,7 @@ window.addEventListener('load',function(){
                             enemy.markedForDeletion = true;
                             this.addExplosion(enemy);
                             if (enemy.type === "hive"){
-                                for (let i = 0; i<5; i++){
+                                for (let i = 0; i<3; i++){
                                     this.enemies.push(new Drone(this, enemy.x + Math.random()*enemy.width, enemy.y + Math.random()*enemy.height()*0.5));
                                 }
                             }
@@ -484,7 +484,7 @@ window.addEventListener('load',function(){
         }
         addEnemy(){
             const randomize = Math.random();
-            if (this.randomize < 0.3) this.enemies.push(new Angler1(this));
+            if (randomize < 0.3) this.enemies.push(new Angler1(this));
             else if (randomize < 0.6) this.enemies.push(new Angler2(this));
             else if (randomize < 0.7) this.enemies.push(new HiveWhale(this));
             else this.enemies.push(new LuckyFish(this));
