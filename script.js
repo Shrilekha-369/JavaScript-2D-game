@@ -225,7 +225,7 @@ window.addEventListener('load',function(){
             this.type = 'lucky';
         }
     }
-    class HiveWhale extends Enemy{
+    /*class HiveWhale extends Enemy{
         constructor(game){
             super(game);
             this.width = 400;
@@ -253,7 +253,7 @@ window.addEventListener('load',function(){
             this.type = 'drone';
             this.speedX = Math.random() * -4.2 - 0.5;
         }
-    }
+    }*/
     class Layer{
         constructor(game, image, speedModifier){
             this.game = game;
