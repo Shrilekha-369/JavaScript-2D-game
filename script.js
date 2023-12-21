@@ -225,35 +225,6 @@ window.addEventListener('load',function(){
             this.type = 'lucky';
         }
     }
-    class HiveWhale extends Enemy{
-        constructor(game){
-            super(game);
-            this.width = 400;
-            this.height = 227;
-            this.y = Math.random()*(this.game.height*0.95-this.height);
-            this.image = document.getElementById('hivewhale');
-            this.frameY = 0;
-            this.lives = 20;
-            this.score = 15;
-            this.type = 'hive';
-            this.speedX = Math.random() * -1.2 - 0.2;
-        }
-    }
-    class Drone extends Enemy{
-        constructor(game, x, y){
-            super(game);
-            this.width = 115;
-            this.height = 95;
-            this.x = x;
-            this.y = y;
-            this.image = document.getElementById('drone');
-            this.frameY = Math.floor(Math.random()*2);
-            this.lives = 3;
-            this.score = this.lives;
-            this.type = 'drone';
-            this.speedX = Math.random() * -4.2 - 0.5;
-        }
-    }
     class Layer{
         constructor(game, image, speedModifier){
             this.game = game;
@@ -450,11 +421,6 @@ window.addEventListener('load',function(){
                             }
                             enemy.markedForDeletion = true;
                             this.addExplosion(enemy);
-                            if (enemy.type === "hive"){
-                                for (let i = 0; i<3; i++){
-                                    this.enemies.push(new Drone(this, enemy.x + Math.random()*enemy.width, enemy.y + Math.random()*enemy.height()*0.5));
-                                }
-                            }
                             if (!this.gameOver) this.score+=enemy.score;
                             //if(this.score > this.winningScore) this.gameOver = true;
                         }
@@ -484,9 +450,8 @@ window.addEventListener('load',function(){
         }
         addEnemy(){
             const randomize = Math.random();
-            if (randomize < 0.3) this.enemies.push(new Angler1(this));
-            else if (randomize < 0.6) this.enemies.push(new Angler2(this));
-            else if (randomize < 0.7) this.enemies.push(new HiveWhale(this));
+            if (randomize < 0.35) this.enemies.push(new Angler1(this));
+            else if (randomize < 0.65) this.enemies.push(new Angler2(this));
             else this.enemies.push(new LuckyFish(this));
         }
         addExplosion(enemy){
